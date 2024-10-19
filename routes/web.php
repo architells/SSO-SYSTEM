@@ -1,18 +1,17 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ShowWelcomeController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ShowWelcomeController::class, 'showDefaultWelcome']);
+Route::get('/', [MainPageController::class, 'index']);
 
 
-Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name('sso-login-page');
 
-Route::get('register', [RegisteredUserController::class, 'showRegistrationForm'])->name('register');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
