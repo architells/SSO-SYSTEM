@@ -31,7 +31,7 @@
                 <div class="card-body d-flex flex-column justify-content-between"> <!-- Flexbox to center content vertically -->
                     <h5 class="card-title">Card 3</h5>
                     <p class="card-text">This card contains more text and information.</p>
-                    <a href="#" class="btn btn-primary mt-auto">Go somewhere</a> <!-- Push button to the bottom -->
+                    <a href="{{'route(auth.ssc-login-page'}}" class="btn btn-primary mt-auto">Go somewhere</a> <!-- Push button to the bottom -->
                 </div>
             </div>
         </div>
