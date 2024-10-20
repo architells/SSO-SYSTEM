@@ -14,10 +14,10 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <!-- Email Address -->
+                <!-- Username -->
                 <div class="mb-4">
-                    <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <x-input-label for="email" :value="__('email')" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required autofocus autocomplete="email" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
@@ -53,7 +53,7 @@
             </form>
 
             <div class="mt-3 text-center">
-                <p>Don't have an account? <a href="{{ route('auth.sso-regiter-page') }}" class="text-indigo-600 hover:text-indigo-800">{{ __('Sign up') }}</a></p>
+                <p>Don't have an account? <a href="{{ route('auth.sso-register-page') }}" class="text-indigo-600 hover:text-indigo-800">{{ __('Sign up') }}</a></p>
             </div>
         </div>
     </div>

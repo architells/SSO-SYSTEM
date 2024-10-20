@@ -9,7 +9,7 @@
                 <div class="card-body d-flex flex-column justify-content-between"> <!-- Flexbox to center content vertically -->
                     <h5 class="card-title">SSO</h5>
                     <p class="card-text">This is a simple card with some text.</p>
-                    <a href="{{ route('sso-login-page') }}" class="btn btn-primary mt-auto">Go somewhere</a> <!-- Push button to the bottom -->
+                    <a href="{{ route('auth.sso-login-page') }}" class="btn btn-primary mt-auto">Go somewhere</a> <!-- Push button to the bottom -->
                 </div>
             </div>
         </div>

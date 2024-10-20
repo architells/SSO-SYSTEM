@@ -25,10 +25,10 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Redirect to intended page or fallback to '/'
+        return redirect()->intended('/');
     }
 
     /**
@@ -38,10 +38,13 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
+        // Invalidate the session to prevent re-authentication
         $request->session()->invalidate();
 
+        // Regenerate the session token to prevent CSRF attacks
         $request->session()->regenerateToken();
 
+        // Redirect the user to the homepage or login page
         return redirect('/');
     }
 }

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class LoginController extends Controller
 {
@@ -16,7 +17,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.login'); // Change this to your login view
+        return view('auth.login');
     }
 
     /**
@@ -25,25 +26,44 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
+
     public function login(Request $request): RedirectResponse
     {
         // Validate the request
         $request->validate([
-            'username' => 'required|string',
+            'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
         // Attempt to log the user in
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            // If successful, then redirect to their intended location
-            return redirect()->intended('/'); // Change '/' to the desired redirect path
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+
+            // Use Gates to redirect based on role
+            if (Gate::allows('is-admin')) {
+                return redirect()->route('admin.dashboard');
+            }
+
+            if (Gate::allows('is-SSO')) {
+                return redirect()->route('SSO.dashboard');
+            }
+
+            if (Gate::allows('is-consumer')) {
+                return redirect()->route('consumer.dashboard');
+            }
+
+            // Default redirection
+            return redirect('/');
         }
 
-        // If unsuccessful, then redirect back to the login form with an error
+        // If login attempt fails
         return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
+            'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
+
 
     /**
      * Logout the user.
@@ -54,8 +74,11 @@ class LoginController extends Controller
     {
         Auth::logout();
 
+        // Invalidate the session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         // Redirect to the login page
-        return redirect('/login'); // Change this to your login route
+        return redirect('/login');
     }
 }
-

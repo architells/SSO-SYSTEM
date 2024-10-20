@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create the SSO role if it doesn't exist
+        $ssoRole = Role::firstOrCreate(['role_name' => 'SSO']);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Create a user with the SSO role
+        $user = User::factory()->create([
+            'name' => 'sso',
+            'email' => 'sso@example.com',
+            'password' => bcrypt('password'), // Make sure to hash the password
         ]);
+
+        // Attach the SSO role to the user
+        $user->roles()->attach($ssoRole->id);
     }
 }
