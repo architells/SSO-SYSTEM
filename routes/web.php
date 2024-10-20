@@ -14,9 +14,7 @@ Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name
 
 Route::get('/sso-register-page', [MainPageController::class, 'ShowSsoRegister'])->name('auth.sso-register-page');
    
-Route::middleware(['auth', \App\Http\Middleware\CheckRole::class . ':SSO'])->group(function () {
-    Route::get('/SSO/dashboard', [SsoDashboard::class, 'dashboard'])->name('SSO.dashboard');
-});
+Route::get('/SSO/dashboard', [SsoDashboard::class, 'dashboard'])->name('SSO.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
