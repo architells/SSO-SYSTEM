@@ -10,9 +10,6 @@ Route::get('/', [MainPageController::class, 'index']);
 
 Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name('sso-login-page');
 
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
