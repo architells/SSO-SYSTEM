@@ -20,9 +20,12 @@
 
 <body class="font-sans antialiased main-background"> <!-- Ensure this class is here -->
 
-    <header class="bg-light text-center py-3">
-        <h1 class="h2">SSO MAIN PAGE</h1>
-    </header>
+    <nav class="bg-light text-center py-3">
+        <h1 class="h2">
+            <a href="{{ route('home') }}" class="text-decoration-none text-dark">SSO MAIN PAGE</a>
+        </h1>
+    </nav>
+
 
     <div class="flex flex-col h-screen">
         <div class="flex-grow">
