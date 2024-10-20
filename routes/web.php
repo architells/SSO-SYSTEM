@@ -5,9 +5,14 @@ use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SSO\ssoDashboard;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SSC\MainPageController;
+
 
 Route::get('/', [MainPageController::class, 'index'])->name('home');
 
+Route::get('/ssc-login', [MainPageController::class, 'showLoginPage'])->name('auth.sso-login-page');
+
+Route::get('/ssc-register-page', [MainPageController::class, 'ShowSscRegister'])->name('auth.ssc-register-page');
 
 Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name('auth.sso-login-page');
 
