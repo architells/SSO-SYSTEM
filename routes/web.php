@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SSO\ssoDashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SSC\MainPageController;
+use App\Http\Controllers\SSC\ProfileController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 
 Route::get('/', [MainPageController::class, 'index'])->name('home');
@@ -14,6 +16,14 @@ Route::get('/ssc-login', [MainPageController::class, 'showLoginPage'])->name('au
 
 Route::get('/ssc-register-page', [MainPageController::class, 'ShowSscRegister'])->name('auth.ssc-register-page');
 
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+    
 Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name('auth.sso-login-page');
 
 Route::get('/sso-register-page', [MainPageController::class, 'ShowSsoRegister'])->name('auth.sso-register-page');
