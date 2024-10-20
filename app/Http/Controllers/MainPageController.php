@@ -18,6 +18,12 @@ class MainPageController extends Controller
     public function ShowSsoRegister(){
         return view('SSO.auth.sso-register-page');
     }
+    public function ShowSscLogin(){
+        return view('SSC.auth.ssc-login-page');
+    }
 
+    public function ShowSscRegister(){
+        return view('SSC.auth.ssc-register-page');
+    }
     
 }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Http\Requests\RegisterRequest; 
 
 class RegisteredUserController extends Controller
 {
@@ -50,8 +51,10 @@ class RegisteredUserController extends Controller
         } else {
             
         }
+        Auth::login($user);
 
+        return redirect()->route('home')->with('status', 'Registration successful!');
         // Optionally, log success or redirect
-        return redirect()->route('home')->with('success', 'Registration successful!');
+        // return redirect()->route('home')->with('success', 'Registration successful!');
     }
 }

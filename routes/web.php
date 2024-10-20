@@ -5,16 +5,17 @@ use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SSO\ssoDashboard;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 
 Route::get('/', [MainPageController::class, 'index'])->name('home');
-
-
+    
 Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name('auth.sso-login-page');
-
 
 Route::get('/sso-register-page', [MainPageController::class, 'ShowSsoRegister'])->name('auth.sso-register-page');
    
 Route::get('/SSO/dashboard', [SsoDashboard::class, 'dashboard'])->name('SSO.dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
