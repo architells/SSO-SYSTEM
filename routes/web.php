@@ -13,8 +13,10 @@ Route::get('/', [MainPageController::class, 'index'])->name('home');
 Route::get('/sso-login-page', [MainPageController::class, 'ShowSsoLogin'])->name('auth.sso-login-page');
 
 Route::get('/sso-register-page', [MainPageController::class, 'ShowSsoRegister'])->name('auth.sso-register-page');
-   
+ 
+
 Route::get('/SSO/dashboard', [SsoDashboard::class, 'dashboard'])->name('SSO.dashboard');
+Route::get('/SSO/add-user', [SsoDashboard::class, 'showAdd'])->name('SSO.add-user');
 
 
 Route::middleware('auth')->group(function () {

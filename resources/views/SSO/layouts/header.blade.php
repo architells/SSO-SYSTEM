@@ -52,6 +52,10 @@
 
     <!-- Include AdminLTE JS -->
     <script src="{{ asset('../dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('../plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('../dist/js/adminlte.js') }}"></script>
+
+
 
     <!-- Add extra scripts in specific views -->
     @stack('scripts')
