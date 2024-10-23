@@ -2,103 +2,90 @@
 
 @section('content')
 <div class="content">
-    <div class="row">
-        <div class="col-12 mt-4">
-            <div class="card">
-                <!-- Card Header -->
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-tools">
-                        <form class="d-flex">
-                            <div class="input-group input-group-sm">
-                                <input type="text" name="table_search" class="form-control" placeholder="Search" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dashboard</h1>
                 </div>
-
-                <!-- /.card-header -->
-
-                <!-- Card Body -->
-                <div class="card-body table-responsive p-0" style="height: calc(100vh - 250px); margin-top: 20px;">
-                    <table class="table table-head-fixed text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Reason</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>183</td>
-                                <td>John Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-success">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>219</td>
-                                <td>Alexander Pierce</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-warning">Pending</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>657</td>
-                                <td>Bob Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-primary">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>175</td>
-                                <td>Mike Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-danger">Denied</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>134</td>
-                                <td>Jim Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-success">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>494</td>
-                                <td>Victoria Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-warning">Pending</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>832</td>
-                                <td>Michael Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-primary">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>982</td>
-                                <td>Rocky Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-danger">Denied</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-sm-6 d-flex justify-content-end align-items-center">
+                    <form class="d-flex justify-content-end align-items-center gap-3 mb-3">
+                        <div class="form-group">
+                            <select name="semester" class="form-select rounded border-gray-300">
+                                <option value="">Select Semester</option>
+                                <option value="1st Semester">1st Semester</option>
+                                <option value="2nd Semester">2nd Semester</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="course" class="form-select rounded border-gray-300">
+                                <option value="">Select Course</option>
+                                <option value="BSIT">BSIT</option>
+                                <option value="BSCS">BSCS</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="year" class="form-select rounded border-gray-300">
+                                <option value="">Select Year</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="table_search" class="form-control rounded border-gray-300" style="width: 200px;" placeholder="Search">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" style="height: calc(1.5em + .5rem + 2px); padding: .3rem .5rem;">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <!-- Card Body -->
+                        <div class="card-body table-responsive p-0" style="height: calc(100vh - 250px);">
+                            <table class="table table-striped table-bordered text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>User</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>183</td>
+                                        <td>John Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td><span class="badge badge-success">Approved</span></td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <!-- More rows as needed -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    <!-- /.content -->
 </div>
 @endsection

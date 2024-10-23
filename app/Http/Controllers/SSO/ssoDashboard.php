@@ -14,4 +14,12 @@ class ssoDashboard extends Controller
    public function showAdd(){
       return view('SSO.add-user');
    }
+
+   public function showSettings(){
+      return view('SSO.settings');
+   }
+
+   public function showProfile(){
+      return view('SSO.profile.user-profile');
+   }
 }
